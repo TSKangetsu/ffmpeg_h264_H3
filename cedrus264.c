@@ -346,6 +346,10 @@ static int cedrus264_encode(AVCodecContext *avctx, AVPacket *pkt,
 
 	c4->frame_num++;
 
+		// FIXME: every second reset for extradata
+	if(c4->frame_num >= 30) // Default 30 fps
+		c4->frame_num = 0;
+
 	return 0;
 }
 
